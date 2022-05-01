@@ -232,7 +232,7 @@ public class Main {
     private static String getStringFromUser(Scanner scanner, String regex1, String regexNumber) {
         String coordinates;
         while (true) {
-            out.print("Enter the coordinates:");
+            out.print("Enter the coordinates (1-3), ex. upper left corner 1 1.:  ");
             coordinates = scanner.nextLine();
             if (!coordinates.matches(regexNumber)) {       /* to check if the string contains numbers*/
                 System.out.println("You should enter numbers!");

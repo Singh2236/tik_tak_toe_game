@@ -1,11 +1,12 @@
 package com.games.navpreet;
 
 import java.util.Scanner;
-
 import static java.lang.System.in;
 import static java.lang.System.out;
 
 public class TheGame implements Runnable {
+    static int whileCount = 0;
+    static  int turn = 0;
 
     @Override
     public void run() {
@@ -16,8 +17,8 @@ public class TheGame implements Runnable {
         String regex1 = "[123] [123]+";
         String regexNumber = "[0-9] [0-9]";
         String coordinates;
-        int whileCount = 0;
-        int turn = 0;
+
+
         int winLoss = 0;
 
         out.println("---------");
@@ -174,11 +175,7 @@ public class TheGame implements Runnable {
             }
 
 
-            out.println("---------");
-            out.println("| " + cells.charAt(0) + " " + cells.charAt(1) + " " + cells.charAt(2) + " |");
-            out.println("| " + cells.charAt(3) + " " + cells.charAt(4) + " " + cells.charAt(5) + " |");
-            out.println("| " + cells.charAt(6) + " " + cells.charAt(7) + " " + cells.charAt(8) + " |");
-            out.println("---------");
+            print(cells);
 
 
             // for vertical lines X
@@ -276,5 +273,13 @@ public class TheGame implements Runnable {
         }
         return coordinates;
     }
+    public void print(StringBuilder cells){
+        out.println("---------");
+        out.println("| " + cells.charAt(0) + " " + cells.charAt(1) + " " + cells.charAt(2) + " |");
+        out.println("| " + cells.charAt(3) + " " + cells.charAt(4) + " " + cells.charAt(5) + " |");
+        out.println("| " + cells.charAt(6) + " " + cells.charAt(7) + " " + cells.charAt(8) + " |");
+        out.println("---------");
+    }
+
 
 }

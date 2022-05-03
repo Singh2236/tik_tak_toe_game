@@ -7,13 +7,14 @@ import static java.lang.System.out;
 
 public class Main {
 
-    public static void main(String[] args) {
-        /*TheGame play1 = new TheGame();
-        //The method of play one which is responsible for playing the game simultaneously
-        Thread t1 = new Thread(play1);
-        t1.start();*/
+    public static void main(String[] args) throws InterruptedException {
+
         boolean flag = true;
         Scanner scanner = new Scanner(System.in);
+
+        out.println("WELCOME TO TICK TAK TOE GAME");
+        out.println("Please sign in to play the game.");
+
         while (flag) {
             out.println("1. SignUp 2. LogIn");
             String input = scanner.next();
@@ -33,6 +34,17 @@ public class Main {
                 String passAuth = scanner.next();
                 if (userData.authentication(nameAuth, passAuth)) {
                     out.println("LogIn Successful");
+                    TheGame play1 = new TheGame();
+                    //The method of play one which is responsible for playing the game simultaneously
+                    Thread t1 = new Thread(play1);
+                    t1.start();
+                   // stop the main thread and resumes after this play1 thread stops
+                    Thread.currentThread().join();
+                    //ask the user to play the game again
+
+                    // if no ask to log out
+
+                    // add method to quit 
                 }
                 else {
                     out.println("Wrong credentials ");

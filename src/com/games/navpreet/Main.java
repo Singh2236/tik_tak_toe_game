@@ -2,7 +2,6 @@ package com.games.navpreet;
 
 import java.util.Scanner;
 
-import static java.lang.System.in;
 import static java.lang.System.out;
 
 public class Main {
@@ -23,7 +22,7 @@ public class Main {
                 String name = scanner.next();
                 out.print("Password: ");
                 String pass = scanner.next();
-                //scanner.next();
+                
                 userData userData = new userData();
                 userData.registration(name, pass);
             }
@@ -34,17 +33,22 @@ public class Main {
                 String passAuth = scanner.next();
                 if (userData.authentication(nameAuth, passAuth)) {
                     out.println("LogIn Successful");
-                    TheGame play1 = new TheGame();
-                    //The method of play one which is responsible for playing the game simultaneously
-                    Thread t1 = new Thread(play1);
-                    t1.start();
-                   // stop the main thread and resumes after this play1 thread stops
-                    Thread.currentThread().join();
-                    //ask the user to play the game again
 
-                    // if no ask to log out
 
-                    // add method to quit 
+                    boolean playing = true;
+                    while (playing) {
+                        out.print("1. play 2. quit: ");
+                        if (scanner.next().equals("1")) {
+                            TheGame game = new TheGame();
+                            Thread t1 = new Thread(game, "game thread");
+                            t1.start();
+                            t1.join();
+                        }
+                        else if (scanner.next().equals("2")) {
+                            playing = false;
+                            out.println("Quiting ");
+                        }
+                    }
                 }
                 else {
                     out.println("Wrong credentials ");
